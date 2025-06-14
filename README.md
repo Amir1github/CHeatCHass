@@ -1,200 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stealth Helper Extension</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #1e1e1e;
-            color: #dcdcdc;
-        }
-        h1 {
-            color: #569cd6;
-            text-align: center;
-            font-size: 2.5em;
-        }
-        p.subtitle {
-            text-align: center;
-            font-style: italic;
-            color: #888;
-            margin-bottom: 30px;
-        }
-        .section-title {
-            color: #9cdcfe;
-            border-bottom: 2px solid #444;
-            padding-bottom: 10px;
-            margin-top: 30px;
-        }
-        .code-block {
-            background: #2d2d2d;
-            padding: 15px;
-            border-radius: 5px;
-            font-family: 'Consolas', 'Monaco', monospace;
-            font-size: 0.9em;
-            margin: 15px 0;
-            overflow-x: auto;
-        }
-        .code-block span.keyword { color: #569cd6; }
-        .code-block span.string { color: #ce9178; }
-        .code-block span.variable { color: #9cdcfe; }
-        .code-block span.method { color: #dcdcaa; }
-        .code-block span.comment { color: #6a9955; }
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 20px 0;
-        }
-        .feature-card {
-            background: #2d2d2d;
-            padding: 15px;
-            border-radius: 5px;
-            flex: 1;
-            min-width: 200px;
-            transition: transform 0.2s;
-        }
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-        .feature-card b {
-            color: #9cdcfe;
-        }
-        .setup-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: #2d2d2d;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .setup-table td {
-            padding: 15px;
-            border-bottom: 1px solid #444;
-        }
-        .setup-table td:first-child {
-            font-weight: bold;
-            color: #9cdcfe;
-            width: 30%;
-        }
-        .disclaimer {
-            background: #2a2a2a;
-            padding: 15px;
-            border-left: 4px solid #ff5555;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-        .disclaimer b {
-            color: #ff5555;
-        }
-        .footer {
-            text-align: center;
-            color: #888;
-            font-size: 0.8em;
-            margin-top: 30px;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        ul li {
-            margin: 10px 0;
-        }
-        @media (max-width: 600px) {
-            .feature-card {
-                min-width: 100%;
-            }
-            .setup-table td {
-                display: block;
-                width: 100%;
-            }
-            .setup-table td:first-child {
-                border-bottom: none;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div align="center">
-        <h1>🕵️‍♂️ Stealth Helper Extension</h1>
-        <p class="subtitle"><i>A Chrome extension that analyzes and optimizes in-game decisions in real-time, working discreetly in the background.</i></p>
-    </div>
+<div>
+  <h1>🕵️‍♂️ CHeatCHass Extension</h1>
+  <p><em>A Chrome extension that analyzes and optimizes in-game decisions in real-time, working discreetly in the background.</em></p>
 
-    <h2 class="section-title">🧩 Project Structure</h2>
-    <pre class="code-block">
+  <hr>
+
+  <h2>🧩 <strong>Project Structure</strong></h2>
+  <pre>
 📦Stealth-Helper
-├── content.js          <span class="comment"># "Innocent" loader script</span>
-├── icon.png            <span class="comment"># Extension icon</span>
-├── manifest.json       <span class="comment"># Chrome extension config</span>
-├── package.json        <span class="comment"># NPM dependencies</span>
-└───scripts/
-    ├── background.js   <span class="comment"># Background service worker</span>
-    └── main.js         <span class="comment"># Core logic (obfuscated)</span>
-    </pre>
+├── content.js          # "Innocent" loader script
+├── icon.png            # Extension icon
+├── manifest.json       # Chrome extension config
+├── package.json        # NPM dependencies
+└── scripts/
+    ├── background.js   # Background service worker
+    └── main.js         # Core logic (obfuscated)
+  </pre>
 
-    <h2 class="section-title">🔌 How It Works</h2>
-    <h3>1. Content.js (Loader)</h3>
-    <div class="code-block">
-        <span class="keyword">const</span> <span class="variable">script</span> = <span class="variable">document</span>.<span class="method">createElement</span>(<span class="string">'script'</span>);<br>
-        <span class="variable">script</span>.<span class="variable">src</span> = <span class="variable">chrome</span>.<span class="variable">runtime</span>.<span class="method">getURL</span>(<span class="string">'scripts/main.js'</span>);<br>
-        <span class="variable">script</span>.<span class="variable">onload</span> = () => <span class="variable">script</span>.<span class="method">remove</span>(); <span class="comment">// Self-cleaning</span><br>
-        (<span class="variable">document</span>.<span class="variable">head</span> || <span class="variable">document</span>.<span class="variable">documentElement</span>).<span class="method">appendChild</span>(<span class="variable">script</span>);
+  <hr>
+
+  <h2>🔌 <strong>How It Works</strong></h2>
+
+  <h3><strong>1. Content.js (Loader)</strong></h3>
+  <ul>
+    <li><strong>Looks harmless</strong> – Passes casual inspection.</li>
+    <li><strong>Dynamically injects</strong> <code>main.js</code>:</li>
+  </ul>
+  <pre><code>
+const script = document.createElement('script');
+script.src = chrome.runtime.getURL('scripts/main.js');
+script.onload = () => script.remove(); // Self-cleaning
+(document.head || document.documentElement).appendChild(script);
+  </code></pre>
+
+  <h3><strong>2. Main.js (Core)</strong></h3>
+  <ul>
+    <li><strong>Obfuscated</strong> – Minimizes detection/reverse-engineering.</li>
+    <li><strong>Real-time analysis</strong> – Uses optimized algorithms.</li>
+    <li><strong>No DOM traces</strong> – Operates purely in memory.</li>
+  </ul>
+
+  <hr>
+
+  <h2>🎮 <strong>Usage Guide</strong></h2>
+
+  <h3>1. Activation Process</h3>
+  <div style="background: #1e1e1e; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+    <p><strong>Step-by-Step Flow:</strong></p>
+    <ol>
+      <li>Open Chrome DevTools (F12 or Ctrl+Shift+I)</li>
+      <li>Navigate to "Console" tab</li>
+      <li>Type these commands:</li>
+    </ol>
+    <pre><code>// Start the helper
+startHelper()
+
+// Stop when done (optional)
+stopHelper()</code></pre>
+  </div>
+
+  <h3>2. Color Selection Prompt</h3>
+  <div style="border: 1px solid #444; padding: 15px; border-radius: 5px; background: #2a2a2a;">
+    <p>After activation, you'll see:</p>
+    <div style="background: white; color: black; padding: 10px; border-radius: 3px; margin: 10px 0; font-family: Arial;">
+      <strong>System Alert:</strong><br>
+      "Enter your color (white/black):"<br>
+      <input type="text" placeholder="Type 'white' or 'black'" style="margin-top: 5px; padding: 3px;">
     </div>
-
-    <h3>2. Main.js (Core)</h3>
+    <p>The extension will then:</p>
     <ul>
-        <li>🔒 <b>Obfuscated</b> - Minimizes detection/reverse-engineering</li>
-        <li>⚡ <b>Real-time analysis</b> - Uses optimized algorithms</li>
-        <li>🧹 <b>No DOM traces</b> - Operates purely in memory</li>
+      <li>Analyze the board every 2 seconds</li>
+      <li>Output suggestions to console (no visible UI)</li>
+      <li>Format: <code style="color: lightgreen;">%cBest move: [move]</code></li>
     </ul>
+  </div>
 
-    <h2 class="section-title">🛠 Setup Guide</h2>
-    <table class="setup-table">
-        <tr>
-            <td><b>1. Clone the repo</b></td>
-            <td><code>git clone https://github.com/Amir1github/CHeatCHass.git</code></td>
-        </tr>
-        <tr>
-            <td><b>2. Open Extensions</b></td>
-            <td>Navigate to <code>chrome://extensions/</code></td>
-        </tr>
-        <tr>
-            <td><b>3. Enable Dev Mode</b></td>
-            <td>Toggle switch in top-right corner</td>
-        </tr>
-        <tr>
-            <td><b>4. Load Extension</b></td>
-            <td>Click "Load Unpacked" and select the folder</td>
-        </tr>
+  <h3>3. Real-Time Analysis</h3>
+  <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 200px; background: #252525; padding: 10px; border-radius: 5px;">
+      <strong>✔️ Normal Mode</strong>
+      <ul style="margin-top: 5px;">
+        <li>1.5s analysis per move</li>
+        <li>Console-only output</li>
+      </ul>
+    </div>
+    <div style="flex: 1; min-width: 200px; background: #252525; padding: 10px; border-radius: 5px;">
+      <strong>⚡ Turbo Mode</strong>
+      <ul style="margin-top: 5px;">
+        <li>0.8s analysis (faster)</li>
+        <li>Higher CPU usage</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>🛠 <strong>Setup Guide</strong></h2>
+  <div style="background: #1e1e1e; padding: 15px; border-radius: 5px;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td style="padding: 8px; border-bottom: 1px solid #444; width: 30%;"><strong>1. Clone Repo</strong></td>
+        <td style="padding: 8px; border-bottom: 1px solid #444;"><code>git clone https://github.com/Amir1github/CHeatCHass.git</code></td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border-bottom: 1px solid #444;"><strong>2. Open Extensions</strong></td>
+        <td style="padding: 8px; border-bottom: 1px solid #444;"><code>chrome://extensions/</code></td>
+      </tr>
+      <tr>
+        <td style="padding: 8px;"><strong>3. Load Extension</strong></td>
+        <td style="padding: 8px;">Enable "Developer Mode" → "Load Unpacked"</td>
+      </tr>
     </table>
+  </div>
 
-    <h2 class="section-title">⚡ Key Features</h2>
-    <div class="features">
-        <div class="feature-card">
-            <b>🕵️ Stealth Mode</b><br>
-            No network calls or DOM changes
-        </div>
-        <div class="feature-card">
-            <b>⚡ Fast Analysis</b><br>
-            Optimized engine for quick suggestions
-        </div>
-        <div class="feature-card">
-            <b>🧹 Self-Cleaning</b><br>
-            Removes traces after execution
-        </div>
-    </div>
+  <div style="border-left: 4px solid #ff5555; padding: 10px; margin: 20px 0; background: #2a2a2a;">
+    <strong>⚠️ Important Notes:</strong>
+    <ul>
+      <li>Works only on Chromium browsers (Chrome/Edge/Brave)</li>
+      <li>Refresh target page after extension installation</li>
+      <li>Disable when not in use to conserve resources</li>
+    </ul>
+  </div>
 
-    <div class="disclaimer">
-        <b>⚠️ Disclaimer</b><br>
-        <i>For educational/research purposes only. Use responsibly and in compliance with platform rules.</i>
-    </div>
+  <hr>
 
-    <div class="footer">
-        <sub>MIT © 2024 | 🔒 Undetectable by design</sub>
-    </div>
-</body>
-</html>
+  <div style="text-align: center; margin-top: 30px;">
+    <sub>MIT © 2024 | Undetectable by design | Use responsibly</sub>
+  </div>
+</div>
